@@ -81,21 +81,27 @@ void loop() {
 	// it blocks until measurement is complete
 	if (bmp.takeForcedMeasurement()) {
 		// can now print out the new measurements
-		Serial.print(F("Temperature = "));
-		Serial.print(bmp.readTemperature());
-		Serial.println(" *C");
+		display.clearDisplay();
+		display.setCursor(0, 0);
+		display.setTextSize(1);
+		// Display static text
+		display.print("T = ");
+		display.print(bmp.readTemperature());
+		display.print(" *C\n");
+		display.print("P = ");
+		display.print(bmp.readPressure());
+		display.print(" Pa\n");
+		display.print("Al = ");
+		display.print(bmp.readAltitude(1013.25));
+		display.print(" m\n");
 
-		Serial.print(F("Pressure = "));
-		Serial.print(bmp.readPressure());
-		Serial.println(" Pa");
+		display.display(); 
 
-		Serial.print(F("Approx altitude = "));
-		Serial.print(bmp.readAltitude(1013.25)); /* Adjusted to local forecast! */
-		Serial.println(" m");
-
-		Serial.println();
 		delay(2000);
 	} else {
-		Serial.println("Forced measurement failed!");
+		display.clearDisplay();
+		display.setTextSize(2);
+		display.print("Forced measurement failed !");
+		display.display(); 
 	}
 }
