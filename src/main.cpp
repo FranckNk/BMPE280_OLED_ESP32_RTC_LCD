@@ -1,3 +1,14 @@
+/*
+
+TITRE          : Communication I2C ESP32 BMP280 RTC OLEC LCD
+AUTEUR         : Franck Nkeubou Awougang
+DATE           : 19/03/2022
+DESCRIPTION    : Programme utilisant I2C comme protocol de communication entre les composantes.
+VERSION        : 0.0.1
+
+*/
+
+
 #include <Arduino.h>
 
 #include <Wire.h>
@@ -116,7 +127,7 @@ void setup() {
 
 	display.setCursor(0, 0);
 	// Display static text
-	display.println("Yo....");
+	display.println("Initialisation....");
 	display.display(); 
 	
 }
